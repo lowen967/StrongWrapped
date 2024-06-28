@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StrongWrapped</title>
+    <style>
+
+        .file-input {
+            margin-bottom: 20px;
+        }
+
+        body {
+            background-color: rgb(15, 15, 15);
+            font-family: Arial;
+
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+        }
+        .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(214, 125, 0);
+            height: 630px;
+            width: 500px;
+            border-radius: 15px;
+        }
+
+        .middle_content {
+            position: absolute;
+            left: 40px;
+            top: -30px;
+            bottom: 40px;
+            right: 40px;   
+        }
+
+        .file-upload-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .file-input-button, .upload-button, .demo {
+            color: rgb(6, 6, 6);
+            background-color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: box-shadow 0.15s;
+            font-size: 14px;
+            width: 420px;
+            height: 40px;
+            margin-top: 7px;
+        }
+        .demo {
+            width: 420px;
+            margin-top: 0px;
+            padding-top: 4px;
+            background-color: rgb(6, 6, 6);
+            color: white;
+        }
+
+        .upload-button {
+            padding-top: 4px;
+            background-color: rgb(255, 156, 17);
+            color: rgb(0, 0, 0);
+        }
+
+        .file-input-button:hover, .upload-button:hover, .demo:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .file-input {
+            font-size: 10px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+      .title {
+        font-size: 55px;
+        font-weight: 1000;
+        margin-bottom: 0;
+        font-family: Lato, Tahoma, sans-serif;
+      }
+
+      .large_font {
+        font-size: 20px;
+      }
+       
+      .larger_font {
+        font-size: 27px;
+      }
+
+      .small {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 140px;
+      }
+
+      .above_small {
+        margin-bottom: 5px;
+      }
+
+      .below_small {
+        margin-top: 5px;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="middle">
+        <div class="middle_content">
+            <p class="title">Strong Wrapped</p>
+            <p>Strong Wrapped gives you stats about your workouts tracked on the Strong app.</p>
+            <p>To use Strong Wrapped you will have to export your data from the Strong app.</p>
+            <p class="above_small">To export your data from the Strong app, navigate to the home screen, click Profile, in the top left click the settings symbol, scroll down and click "Export Strong Data".</p>
+            <p class="small">or</p>
+            <p class="below_small">Profile &minus;<span class="larger_font">&#8250;</span> Settings &minus;<span class="larger_font">&#8250;</span> Export Strong Data</p>
+            <form method="get" action="{% url 'demo' %}">
+                <button type="submit" class="demo"> Show demo &minus;<span class="large_font">&#8250;</span></button>
+            </form>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <button type="button" id="file-upload-button" class="file-input-button" onclick="document.getElementById('file-input').click()">
+                    <span id="file-upload-text">Select file to upload</span>
+                    <input type="file" id="file-input" name="file" class="file-input" style="display: none;" onchange="updateFileName(this)">
+                </button>
+                <button type="submit" id="upload-button" class="upload-button" style="display: none;">View your wrapped &minus;<span class="large_font">&#8250;</span></button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            var fileName = input.files[0].name;
+            document.getElementById('file-upload-text').innerText = fileName;
+
+            document.getElementById('upload-button').style.display = 'inline-block';
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StrongWrapped</title>
+    <style>
+
+
+        body {
+            background-color: rgb(165, 104, 19);
+            font-family: Arial;
+
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+        }
+        .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(15, 15, 15);
+            height: 350px;
+            width: 650px;
+            border-radius: 15px;
+        }
+
+        .middle_content {
+            position: absolute;
+            left: 40px;
+            top: -30px;
+            bottom: 40px;
+            right: 40px;   
+        }
+
+        .upload-button {
+            color: rgb(6, 6, 6);
+            background-color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: opacity 0.15s;
+            font-size: 14px;
+            width: 570px;
+            height: 40px;
+            margin-top: 7px;
+            padding-top: 4px;
+        }
+
+
+        .upload-button:hover {
+            opacity: 0.85;
+        }
+
+
+      .large_font {
+        font-size: 20px;
+      }
+       
+      .title {
+        font-size: 55px;
+        font-weight: 1000;
+        margin-bottom: 0;
+        font-family: Lato, Tahoma, sans-serif;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="middle">
+        <div class="middle_content">
+            <p class="title">That's not the right file :&#40;</p>
+            <p>We couldn't read the file you selected as it was not a csv file. Make sure the file you select has the correct format and try again.</p>
+            <a href="{% url 'upload' %}"><button class="upload-button">Try again &minus;<span class="large_font">&#8250;</button></a>
+    </div>
+</body>
+</html>
+

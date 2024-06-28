@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StrongWrapped</title>
+    <style>
+    body {
+        margin: 50px;
+        background-color: rgb(15, 15, 15);
+        color: rgb(204, 119, 0);
+    }
+
+    .title_grid {
+        display: grid;
+        grid-template-rows: 100px 1fr 50px;
+    }
+
+    .stat_grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 50px;
+        font-family: Arial, sans-serif;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: rgb(222, 130, 0);
+    }
+
+    .subtitle {
+      text-align: center;  
+      font-size: 20px;
+        font-family: Arial;
+        color: rgb(217, 127, 0);
+    }
+
+
+    .back {
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 149, 0);
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+        transition: box-shadow 0.15s;
+        font-size: 18px;
+        width: 100%;
+        transition: opacity 0.15s;
+        margin-top: 20px;
+    }
+    .back:hover {
+        opacity: 0.9;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+    .stat, .stat_bottom {
+        padding-bottom: 20px;
+        padding-right: 80px;
+        padding-top: 20px;
+        border-bottom: 2px solid rgba(214, 125, 0, 0.2);
+        font-weight: 100px;
+    }
+    .stat_bottom {
+        border-bottom: 0;
+    }
+    
+    .stat_title, .words_stat {
+        font-weight: bold;
+        font-family: Arial;
+        margin: 0;
+    }
+
+    .stat_title {
+        color: rgb(215, 126, 2); 
+    }
+
+    .words {
+        margin: 0;
+        font-family: Arial;
+        color: rgb(195, 114, 0);
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class=grid>
+        <div></div>
+        <div class="title_grid">
+          <div>
+              <div>
+                <p class="title">Your Wrapped</p>
+              </div> 
+          </div>
+          <div class="stat_grid">
+            <div class="stat">
+                <p class="stat_title">Total stats</p>
+            </div>
+            <div class="stat"></div>
+            <div class="stat">
+                <p class="words">Total weight lifted</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ total_weight_lifted }} lbs</p>
+            </div>
+            <div class="stat">
+                <p class="words">Total sets</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ total_sets }}</p>
+            </div>
+            <div class="stat">
+                <p class="words">Total reps</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ total_reps }}</p>
+            </div>
+            <div class="stat">
+                <p class="stat_title">Averages</p>
+            </div>
+            <div class="stat"></div>
+            <div class="stat">
+                <p class="words">Average sets per exercise</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ avg_set_order}}</p>
+            </div>
+            <div class="stat">
+                <p class="words">Average reps per set</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ mean_reps}}</p>
+            </div>
+            <div class="stat">
+                <p class="words">Average weight</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ mean_weight}}</p>
+            </div>
+            <div class="stat">
+                <p class="stat_title">Most frequent exercise</p>
+            </div>
+            <div class="stat"></div>
+            <div class="stat">
+                <p class="words">Name of exercise</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ most_frequent_exercise }}</p>
+            </div>
+            <div class="stat">
+                <p class="words">Sets done of {{ most_frequent_exercise }}</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ most_frequent_count }}</p>
+            </div>
+            <div class="stat">
+                <p class="words">Percent of total sets that were {{ most_frequent_exercise }}</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ percent_most_frequent}}%</p>
+            </div>
+            <div class="stat">
+                <p class="words"> Reps done of {{ most_frequent_exercise }}</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ total_reps_most_frequent }}</p>
+            </div>
+            <div class="stat">
+                <p class="words">Percent of total reps that were {{ most_frequent_exercise }}</P>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ percent_reps_most_frequent}}%</p>
+            </div>
+            <div class="stat">
+                <p class="words">Weight lifted on {{ most_frequent_exercise }}</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ total_weight_lifted_most_frequent }} lbs</p>
+            </div>
+            <div class="stat">
+                <p class="words">Percent of total weight that was {{ most_frequent_exercise }}</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ percent_weight_most_frequent}}%</p>
+            </div>
+            <div class="stat">
+                <p class="stat_title">Heaviest lift</p>
+            </div>
+            <div class="stat"></div>
+            <div class="stat">
+                <p class="words">Exercise with heaviest single lift</p>
+            </div>
+            <div class="stat">
+                <p class="words_stat">{{ corresponding_exercise}}</p>
+            </div>
+            <div class="stat_bottom">
+                <p class="words">Heaviest single lift</p>
+            </div>
+            <div class="stat_bottom">
+                <p class="words_stat">{{ highest_weight_entry}} lbs</p>
+            </div>
+        </div>
+        <div>
+          <div>
+            <a href="{% url 'upload' %}"><button class="back">Reset</button></a>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+</html>
